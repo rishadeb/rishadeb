@@ -904,6 +904,14 @@
 
     @media (max-width: 760px) {
 
+      body::before {
+        opacity: 0.16;
+      }
+
+      body::after {
+        opacity: 0.08;
+      }
+
       .shell,
       .topbar-inner {
         width: min(var(--max), calc(100% - 20px));
@@ -912,22 +920,124 @@
       .topbar-inner {
         padding: 16px 0;
         align-items: start;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: auto;
+        gap: 12px;
+      }
+
+      .brand {
+        width: 100%;
+      }
+
+      .topnav {
+        width: 100%;
+        gap: 8px;
+      }
+
+      .nav-link {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 0;
+        padding: 0 14px;
+        font-size: 0.76rem;
+        letter-spacing: 0.08em;
       }
 
       .hero {
-        padding-top: 40px;
+        padding: 40px 0 24px;
+      }
+
+      .section {
+        padding: 20px 0;
+      }
+
+      .panel {
+        padding: 20px;
+      }
+
+      .hero-panel {
+        gap: 20px;
+        grid-template-rows: auto;
+        align-content: start;
+      }
+
+      .control-stack {
+        align-self: start;
+      }
+
+      .hero-copy p,
+      .carousel-topbar p,
+      .experience-head p,
+      .section-head p {
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+
+      .section-head {
+        gap: 10px;
+        align-items: start;
+      }
+
+      .section-head h2 {
+        font-size: clamp(1.9rem, 11vw, 3rem);
+      }
+
+      .panel-label {
+        gap: 10px;
+      }
+
+      .panel-label::after {
+        max-width: 72px;
       }
 
       .hero-meta,
       .control-stack,
       .skill-grid,
       .tech-matrix,
+      .section-head,
       .timeline-item,
       .edu-item,
       .signal-row,
       .carousel-topbar,
       .experience-head {
         grid-template-columns: 1fr;
+      }
+
+      .meta-cell,
+      .stat,
+      .skill-chip,
+      .timeline-item,
+      .edu-item,
+      .cta-strip,
+      .experience-slide {
+        padding: 16px;
+      }
+
+      .signal-row {
+        gap: 8px;
+        padding: 14px 14px 14px 16px;
+      }
+
+      .signal-row strong,
+      .meta-cell strong,
+      .stat strong,
+      .skill-chip strong {
+        font-size: 0.92rem;
+        line-height: 1.5;
+      }
+
+      .carousel-topbar {
+        gap: 12px;
+      }
+
+      .carousel-controls {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .carousel-button {
+        width: 44px;
+        min-width: 44px;
       }
 
       .carousel-track {
@@ -938,8 +1048,18 @@
         text-align: left;
       }
 
+      .cta-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .cta-actions .button {
+        width: 100%;
+      }
+
       h1 {
         font-size: clamp(2.6rem, 16vw, 4rem);
+        line-height: 0.92;
       }
     }
   </style>
