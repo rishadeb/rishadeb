@@ -438,6 +438,26 @@
       }
     }
 
+    .terminal-cursor {
+      color: var(--accent-primary);
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      animation: terminal-blink 1.5s step-end infinite;
+      text-shadow: 0 0 12px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.8);
+    }
+
+    @keyframes terminal-blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
     .section {
       padding: 32px 0;
     }
@@ -946,7 +966,7 @@
         <article class="panel hero-panel reveal is-visible">
           <span class="panel-label">Software Engineer</span>
           <div class="hero-copy">
-            <h1>Rishad Ebrahim</h1>
+            <h1><span class="terminal-cursor">&gt;</span> Rishad Ebrahim</h1>
             <p>
               Full-stack software engineer with experience across backend systems, web applications, internal tools,
               platform
