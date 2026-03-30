@@ -1,1380 +1,1339 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rishad Ebrahim | Full-Stack Software Engineer</title>
-    <meta
-      name="description"
-      content="Rishad Ebrahim is a full-stack software engineer with experience across backend systems, web applications, modernisation, and delivery workflows."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rishad Ebrahim | Full-Stack Software Engineer</title>
+  <meta name="description"
+    content="Rishad Ebrahim is a full-stack software engineer with experience across backend systems, web applications, modernisation, and delivery workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      /* Core Cyber Palette */
+      --bg-r: 9;
+      --bg-g: 10;
+      --bg-b: 16;
+      /* rgb(9, 10, 16) */
+      --sfc-r: 18;
+      --sfc-g: 20;
+      --sfc-b: 32;
+      /* rgb(18, 20, 32) */
+      --pri-r: 0;
+      --pri-g: 255;
+      --pri-b: 214;
+      /* rgb(0, 255, 214) */
+      --sec-r: 255;
+      --sec-g: 0;
+      --sec-b: 168;
+      /* rgb(255, 0, 168) */
+
+      --bg: rgb(var(--bg-r), var(--bg-g), var(--bg-b));
+      --surface: rgb(var(--sfc-r), var(--sfc-g), var(--sfc-b));
+      --surface-elevated: rgba(var(--sfc-r), var(--sfc-g), var(--sfc-b), 0.95);
+
+      --accent-primary: rgb(var(--pri-r), var(--pri-g), var(--pri-b));
+      --accent-secondary: rgb(var(--sec-r), var(--sec-g), var(--sec-b));
+
+      --text: #e0e6ed;
+      --muted: #7c8da6;
+
+      /* Discipline & Glow */
+      --border-dim: rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.2);
+      --border-glow: rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.6);
+      --shadow-neon: 0 0 12px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.15),
+        inset 0 0 20px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.02);
+      --shadow-magenta: 0 0 15px rgba(var(--sec-r), var(--sec-g), var(--sec-b), 0.25);
+
+      /* Machine Clipped Geometry (No organic curves) */
+      --clip: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+      --clip-sm: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+      --clip-btn: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+      --clip-alt: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+
+      --max: 1260px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: var(--bg);
+      /* Rigid schematic grid */
+      background-image:
+        linear-gradient(rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* CRT Scanline Overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.15) 2px,
+          rgba(0, 0, 0, 0.15) 4px);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Sensor Sweep Scanner */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 12vh;
+      background: linear-gradient(to bottom,
+          transparent,
+          rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.02) 80%,
+          rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.15) 98%,
+          var(--accent-primary) 100%);
+      animation: cyber-scan 8s linear infinite;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.3;
+    }
+
+    @keyframes cyber-scan {
+      0% {
+        transform: translateY(-100vh);
+      }
+
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding-bottom: 48px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(var(--bg-r), var(--bg-g), var(--bg-b), 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-glow);
+      box-shadow: 0 1px 20px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.15);
+    }
+
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: grid;
+      gap: 4px;
+    }
+
+    /* Typography Discipline */
+    .eyebrow,
+    .panel-label,
+    .stat-label,
+    .mini-label,
+    .tag,
+    .timeline-year,
+    .slide-index {
+      font-family: "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      color: var(--accent-secondary);
+      text-shadow: 0 0 8px rgba(var(--sec-r), var(--sec-g), var(--sec-b), 0.4);
+    }
+
+    .brand strong {
+      font-size: 0.94rem;
+      font-family: "IBM Plex Mono", monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      text-shadow: 0 0 10px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.3);
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link,
+    .button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      clip-path: var(--clip-btn);
+      border: 1px solid var(--border-dim);
+      background: var(--surface);
+      color: var(--text);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all 180ms ease;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .button:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.08);
+      box-shadow: inset 0 0 15px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.15);
+      text-shadow: 0 0 8px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.5);
+    }
+
+    .hero {
+      padding: 64px 0 32px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(340px, 0.8fr);
+      gap: 24px;
+    }
+
+    .panel {
+      position: relative;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border-dim);
+      clip-path: var(--clip);
+      box-shadow: var(--shadow-neon);
+    }
+
+    /* Glowing border accent on panels */
+    .panel::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 40px;
+      background: var(--accent-primary);
+      box-shadow: 0 0 10px var(--accent-primary);
+    }
+
+    .hero-panel {
+      min-height: min(78vh, 760px);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 28px;
+    }
+
+    .panel-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.72rem;
+      color: var(--accent-primary);
+      text-shadow: 0 0 8px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.4);
+    }
+
+    .panel-label::after {
+      content: "";
+      flex-grow: 1;
+      max-width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent-primary), transparent);
+      box-shadow: 0 0 8px var(--accent-primary);
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 8vw, 6.4rem);
+      line-height: 0.9;
+      text-shadow: 4px 0 0 rgba(var(--sec-r), var(--sec-g), var(--sec-b), 0.4),
+        -2px 0 0 rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.6);
+    }
+
+    .hero-copy p {
+      margin: 24px 0 0 0;
+      max-width: 60ch;
+      font-size: 1.08rem;
+      line-height: 1.72;
+      color: var(--text);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .meta-cell,
+    .stat,
+    .skill-chip,
+    .timeline-item,
+    .edu-item,
+    .cta-strip {
+      position: relative;
+      padding: 16px 20px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-dim);
+      clip-path: var(--clip-alt);
+    }
+
+    .meta-cell strong,
+    .stat strong,
+    .skill-chip strong,
+    .timeline-copy strong,
+    .edu-copy strong,
+    .cta-strip strong {
+      display: block;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: #fff;
+    }
+
+    .mini-label,
+    .stat-label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.68rem;
+      color: var(--accent-secondary);
+    }
+
+    .control-stack {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-self: end;
+    }
+
+    .stat {
+      min-height: 124px;
+      display: grid;
+      align-content: space-between;
+      gap: 14px;
+    }
+
+    .stat-value {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 0.98;
+      color: var(--accent-primary);
+      text-shadow: 0 0 16px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.6);
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .stat-value.compact {
+      font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+      line-height: 1.05;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .status-panel {
+      display: grid;
+      gap: 20px;
+    }
+
+    .signal-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .signal-row {
+      display: grid;
+      grid-template-columns: 112px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      min-height: 48px;
+      padding: 12px 16px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-dim);
+      border-left: 2px solid var(--accent-secondary);
+      clip-path: var(--clip-sm);
+    }
+
+    .signal-row .tag {
+      font-size: 0.67rem;
+      color: var(--muted);
+    }
+
+    .signal-row strong {
+      font-size: 0.96rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: var(--accent-primary);
+      box-shadow: 0 0 12px var(--accent-primary);
+      animation: pulse-glow 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.85);
+        box-shadow: 0 0 4px var(--accent-primary);
+      }
+    }
+
+    .section {
+      padding: 32px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      color: #fff;
+      text-shadow: 0 0 20px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.2);
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 56ch;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+    }
+
+    .feature-block {
+      display: grid;
+      gap: 16px;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill-chip {
+      min-height: 124px;
+    }
+
+    .skill-chip p,
+    .timeline-copy p,
+    .edu-copy p,
+    .cta-strip p {
+      margin: 10px 0 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item,
+    .edu-item {
+      display: grid;
+      grid-template-columns: 108px minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .timeline-year {
+      font-size: 0.72rem;
+      color: var(--accent-primary);
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .bullet-list span {
+      display: block;
+      padding-left: 20px;
+      position: relative;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .bullet-list span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 2px;
+      background: var(--accent-secondary);
+      box-shadow: 0 0 8px var(--accent-secondary);
+    }
+
+    .stack-lane {
+      display: grid;
+      gap: 16px;
+    }
+
+    .experience-carousel {
+      display: grid;
+      gap: 20px;
+    }
+
+    .carousel-topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .carousel-topbar p {
+      margin: 8px 0 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .carousel-controls {
+      display: flex;
+      gap: 12px;
+    }
+
+    .carousel-button {
+      width: 48px;
+      min-width: 48px;
+      padding: 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .carousel-track {
+      position: relative;
+      min-height: 620px;
+    }
+
+    .experience-slide {
+      display: none;
+      gap: 20px;
+      padding: 24px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-dim);
+      border-top: 2px solid var(--accent-primary);
+      clip-path: var(--clip-alt);
+    }
+
+    .experience-slide.is-active {
+      display: grid;
+      /* Sharp lateral reveal for slides */
+      animation: slideReveal 400ms cubic-bezier(0.1, 0, 0.1, 1);
+    }
+
+    @keyframes slideReveal {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .experience-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .experience-head p {
+      margin: 12px 0 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 58ch;
+    }
+
+    .role-meta {
+      text-align: right;
+      color: var(--muted);
+      line-height: 1.6;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.9rem;
+    }
+
+    .slide-index {
+      font-size: 0.72rem;
+      color: var(--accent-secondary);
+      margin-bottom: 8px;
+    }
+
+    .indicator-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .indicator {
+      width: 32px;
+      height: 6px;
+      border: 1px solid var(--border-dim);
+      background: var(--surface-elevated);
+      transition: background 200ms ease, box-shadow 200ms ease;
+      cursor: pointer;
+    }
+
+    .indicator.is-active {
+      background: var(--accent-primary);
+      box-shadow: 0 0 12px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.6);
+      border-color: var(--accent-primary);
+    }
+
+    .tech-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .matrix-item {
+      padding: 16px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-dim);
+      clip-path: var(--clip-sm);
+    }
+
+    .matrix-item strong {
+      display: block;
+      font-size: 0.85rem;
+      color: #fff;
+      font-family: "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+    }
+
+    .matrix-item span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
+    .cta-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: flex-end;
+    }
+
+    .button.primary {
+      background: rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.15);
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      text-shadow: 0 0 8px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.5);
+    }
+
+    .button.primary:hover {
+      background: var(--accent-primary);
+      color: var(--bg);
+      text-shadow: none;
+      box-shadow: 0 0 20px rgba(var(--pri-r), var(--pri-g), var(--pri-b), 0.5);
+    }
+
+    .button.ghost {
+      color: var(--muted);
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .button.ghost:hover {
+      border-color: var(--border-dim);
+      color: var(--accent-secondary);
+      background: rgba(var(--sec-r), var(--sec-g), var(--sec-b), 0.08);
+    }
+
+    .button[aria-disabled="true"] {
+      cursor: default;
+      opacity: 0.74;
+    }
+
+    /* Engineered Motion / Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 500ms cubic-bezier(0.1, 0, 0.1, 1),
+        transform 500ms cubic-bezier(0.1, 0, 0.1, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .delay-1 {
+      transition-delay: 80ms;
+    }
+
+    .delay-2 {
+      transition-delay: 160ms;
+    }
+
+    .delay-3 {
+      transition-delay: 240ms;
+    }
+
+    .delay-4 {
+      transition-delay: 320ms;
+    }
+
+    @media print {
+      @page {
+        margin: 0.5in;
+      }
+
       :root {
-        --bg: #060816;
-        --bg-elevated: rgba(11, 16, 35, 0.84);
-        --bg-panel: rgba(10, 17, 38, 0.92);
-        --panel-border: rgba(101, 228, 255, 0.24);
-        --panel-strong: rgba(101, 228, 255, 0.5);
-        --text: #eff6ff;
-        --muted: #93a4cc;
-        --accent: #65e4ff;
-        --accent-2: #38f6b8;
-        --accent-3: #4f7cff;
-        --danger: #ff5dcf;
-        --shadow: 0 0 0 1px rgba(101, 228, 255, 0.12),
-          0 0 30px rgba(79, 124, 255, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.03);
-        --max: 1260px;
-        --clip: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+        --bg: #ffffff;
+        --surface: #ffffff;
+        --surface-elevated: #ffffff;
+        --border-dim: #000000;
+        --text: #000000;
+        --muted: #333333;
+        --accent-primary: #000000;
+        --accent-secondary: #000000;
       }
 
       * {
-        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
-
+      html,
       body {
-        margin: 0;
-        min-height: 100vh;
-        background:
-          radial-gradient(circle at 15% 20%, rgba(79, 124, 255, 0.22), transparent 24%),
-          radial-gradient(circle at 82% 14%, rgba(101, 228, 255, 0.16), transparent 24%),
-          radial-gradient(circle at 50% 80%, rgba(56, 246, 184, 0.1), transparent 28%),
-          linear-gradient(180deg, #04050d 0%, #060816 48%, #03050d 100%);
-        color: var(--text);
-        font-family: "Space Grotesk", sans-serif;
-        overflow-x: hidden;
+        background: #ffffff !important;
+        color: #000 !important;
+        font-size: 10pt;
       }
 
       body::before,
-      body::after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: -1;
+      body::after,
+      .panel::after {
+        display: none !important;
       }
 
-      body::before {
-        background:
-          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 72px 72px;
-        mask-image: radial-gradient(circle at center, black 56%, transparent 94%);
-        opacity: 0.38;
-      }
-
-      body::after {
-        background: linear-gradient(180deg, transparent, rgba(101, 228, 255, 0.05), transparent);
-        animation: sweep 8s linear infinite;
-        transform: translateY(-100%);
-        opacity: 0.35;
-      }
-
-      @keyframes sweep {
-        0% {
-          transform: translateY(-100%);
-        }
-        100% {
-          transform: translateY(100%);
-        }
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
+      .topbar,
+      .carousel-controls,
+      .indicator-row,
+      .button.ghost {
+        display: none !important;
       }
 
       .shell {
-        width: min(var(--max), calc(100% - 32px));
-        margin: 0 auto;
-        padding-bottom: 48px;
+        padding: 0;
+        width: 100%;
       }
 
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        backdrop-filter: blur(18px);
-        background: linear-gradient(180deg, rgba(3, 6, 16, 0.88), rgba(3, 6, 16, 0.3));
-        border-bottom: 1px solid rgba(101, 228, 255, 0.12);
-      }
-
-      .topbar-inner {
-        width: min(var(--max), calc(100% - 32px));
-        margin: 0 auto;
-        min-height: 72px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-      }
-
-      .brand {
-        display: grid;
-        gap: 2px;
-      }
-
-      .eyebrow,
-      .panel-label,
-      .stat-label,
-      .mini-label,
-      .tag,
-      .timeline-year {
-        font-family: "IBM Plex Mono", monospace;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-      }
-
-      .eyebrow {
-        font-size: 0.72rem;
-        color: var(--accent);
-      }
-
-      .brand strong {
-        font-size: 0.94rem;
-        letter-spacing: 0.06em;
-      }
-
-      .topnav {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .nav-link,
-      .button {
-        min-height: 42px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 16px;
-        clip-path: var(--clip);
-        border: 1px solid rgba(101, 228, 255, 0.24);
-        background: rgba(12, 18, 40, 0.58);
-        color: var(--text);
-        transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease,
-          background 180ms ease;
-      }
-
-      .nav-link:hover,
-      .button:hover {
-        transform: translateX(4px);
-        border-color: rgba(101, 228, 255, 0.52);
-        box-shadow: 0 0 28px rgba(101, 228, 255, 0.12);
-        background: rgba(14, 25, 53, 0.9);
-      }
-
-      .hero {
-        padding: 56px 0 28px;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.4fr) minmax(340px, 0.8fr);
-        gap: 18px;
-      }
-
-      .panel {
-        position: relative;
-        padding: 22px;
-        background: var(--bg-panel);
-        border: 1px solid var(--panel-border);
-        clip-path: var(--clip);
-        box-shadow: var(--shadow);
-        overflow: hidden;
-      }
-
-      .panel::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(101, 228, 255, 0.08), transparent 36%, transparent 64%, rgba(79, 124, 255, 0.08));
-        pointer-events: none;
-      }
-
-      .hero-panel {
-        min-height: min(78vh, 760px);
-        display: grid;
-        grid-template-rows: auto auto 1fr auto;
-        gap: 24px;
-      }
-
-      .panel-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 0.72rem;
-        color: var(--accent);
-      }
-
-      .panel-label::after {
-        content: "";
-        width: 72px;
-        height: 1px;
-        background: linear-gradient(90deg, rgba(101, 228, 255, 0.9), transparent);
-        box-shadow: 0 0 14px rgba(101, 228, 255, 0.48);
-      }
-
-      .hero-copy {
-        max-width: 760px;
-      }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin: 0;
-      }
-
-      h1 {
-        font-size: clamp(3.2rem, 8vw, 6.4rem);
-        line-height: 0.9;
-        letter-spacing: -0.06em;
-      }
-
-      .hero-copy p {
-        margin-top: 20px;
-        max-width: 60ch;
-        font-size: 1.08rem;
-        line-height: 1.72;
-        color: #d6e4ff;
-      }
-
-      .hero-meta {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-
+      .panel,
       .meta-cell,
       .stat,
       .skill-chip,
       .timeline-item,
       .edu-item,
-      .cta-strip {
-        position: relative;
-        padding: 16px;
-        background: var(--bg-elevated);
-        border: 1px solid rgba(101, 228, 255, 0.14);
-        clip-path: var(--clip);
+      .signal-row,
+      .matrix-item,
+      .experience-slide {
+        background: none !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        clip-path: none !important;
+        padding: 12px !important;
       }
 
-      .meta-cell strong,
-      .stat strong,
-      .skill-chip strong,
-      .timeline-copy strong,
-      .edu-copy strong,
-      .cta-strip strong {
-        display: block;
-        font-size: 0.95rem;
-        line-height: 1.45;
-      }
-
-      .mini-label,
-      .stat-label {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 0.68rem;
-        color: var(--muted);
-      }
-
-      .control-stack {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        align-self: end;
-      }
-
-      .stat {
-        min-height: 124px;
-        display: grid;
-        align-content: space-between;
-        gap: 14px;
-      }
-
-      .stat-value {
-        font-size: clamp(1.5rem, 3vw, 2.2rem);
-        line-height: 0.98;
-        color: var(--accent);
-        text-shadow: 0 0 16px rgba(101, 228, 255, 0.36);
-        overflow-wrap: anywhere;
-      }
-
-      .stat-value.compact {
-        font-size: clamp(1.15rem, 2.2vw, 1.65rem);
-        line-height: 1.05;
-      }
-
-      .side-stack {
-        display: grid;
-        gap: 18px;
-      }
-
-      .status-panel {
-        display: grid;
-        gap: 18px;
-      }
-
-      .signal-grid {
-        display: grid;
-        gap: 10px;
-      }
-
-      .signal-row {
-        display: grid;
-        grid-template-columns: 112px 1fr auto;
-        gap: 10px;
-        align-items: center;
-        min-height: 44px;
-        padding: 10px 12px;
-        background: rgba(8, 13, 29, 0.86);
-        border: 1px solid rgba(101, 228, 255, 0.12);
-        clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
-      }
-
-      .signal-row .tag {
-        font-size: 0.67rem;
-        color: var(--muted);
-      }
-
-      .signal-row strong {
-        font-size: 0.96rem;
-        font-weight: 500;
-      }
-
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--accent-2);
-        box-shadow: 0 0 16px rgba(56, 246, 184, 0.82);
-      }
-
-      .section {
-        padding: 22px 0;
-      }
-
-      .section-head {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 16px;
-        align-items: end;
-        margin-bottom: 18px;
-      }
-
-      .section-head h2 {
-        font-size: clamp(2rem, 4vw, 3.4rem);
-        letter-spacing: -0.05em;
-      }
-
-      .section-head p {
-        max-width: 56ch;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: 1.05fr 0.95fr;
-        gap: 18px;
-      }
-
-      .feature-block {
-        display: grid;
+      .hero-grid,
+      .features-grid,
+      .cta-panel {
+        grid-template-columns: 1fr;
         gap: 12px;
       }
 
-      .skill-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .skill-chip {
-        min-height: 124px;
-      }
-
-      .skill-chip p,
-      .timeline-copy p,
-      .edu-copy p,
-      .cta-strip p {
-        margin-top: 10px;
-        color: var(--muted);
-        line-height: 1.65;
-      }
-
-      .timeline {
-        display: grid;
-        gap: 12px;
-      }
-
-      .timeline-item,
-      .edu-item {
-        display: grid;
-        grid-template-columns: 108px minmax(0, 1fr);
-        gap: 14px;
-      }
-
-      .timeline-year {
-        font-size: 0.72rem;
-        color: var(--accent);
-      }
-
-      .bullet-list {
-        display: grid;
-        gap: 8px;
-        margin-top: 12px;
-      }
-
-      .bullet-list span {
-        display: block;
-        padding-left: 16px;
-        position: relative;
-        color: #d5dff7;
-        line-height: 1.6;
-      }
-
-      .bullet-list span::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0.65em;
-        width: 7px;
-        height: 1px;
-        background: var(--accent);
-        box-shadow: 0 0 12px rgba(101, 228, 255, 0.48);
-      }
-
-      .stack-lane {
-        display: grid;
-        gap: 12px;
-      }
-
-      .experience-carousel {
-        display: grid;
-        gap: 16px;
-      }
-
-      .carousel-topbar {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 12px;
-        align-items: center;
-      }
-
-      .carousel-topbar p {
-        margin-top: 10px;
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .carousel-controls {
-        display: flex;
-        gap: 10px;
-      }
-
-      .carousel-button {
-        width: 44px;
-        min-width: 44px;
-        padding: 0;
-        font-size: 1rem;
-      }
-
+      .hero-panel,
       .carousel-track {
-        position: relative;
-        min-height: 620px;
+        min-height: 0;
       }
 
       .experience-slide {
-        display: none;
-        gap: 18px;
-        padding: 20px;
-        background: rgba(8, 13, 29, 0.88);
-        border: 1px solid rgba(101, 228, 255, 0.14);
-        clip-path: var(--clip);
+        display: grid !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 12px;
       }
 
-      .experience-slide.is-active {
-        display: grid;
-        animation: slideReveal 320ms ease;
+      h1,
+      h2,
+      h3,
+      strong,
+      p,
+      span {
+        color: #000 !important;
+        text-shadow: none !important;
       }
 
-      @keyframes slideReveal {
-        from {
-          opacity: 0;
-          transform: translateX(18px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+      .panel-label::after {
+        background: #000 !important;
+        box-shadow: none !important;
       }
 
-      .experience-head {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 16px;
-        align-items: start;
-      }
-
-      .experience-head p {
-        margin-top: 10px;
-        color: var(--muted);
-        line-height: 1.7;
-        max-width: 58ch;
-      }
-
-      .role-meta {
-        text-align: right;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
-      .slide-index {
-        font-size: 0.72rem;
-        color: var(--accent);
-        margin-bottom: 8px;
-      }
-
-      .indicator-row {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .indicator {
-        width: 12px;
-        height: 12px;
-        border-radius: 999px;
-        border: 1px solid rgba(101, 228, 255, 0.24);
-        background: rgba(101, 228, 255, 0.08);
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
-      }
-
-      .indicator.is-active {
-        background: var(--accent);
-        box-shadow: 0 0 18px rgba(101, 228, 255, 0.44);
-      }
-
-      .tech-matrix {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 14px;
-      }
-
-      .matrix-item {
-        padding: 12px;
-        background: rgba(7, 14, 31, 0.92);
-        border: 1px solid rgba(101, 228, 255, 0.1);
-        clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
-      }
-
-      .matrix-item strong {
-        display: block;
-        font-size: 0.85rem;
-      }
-
-      .matrix-item span {
-        display: block;
-        margin-top: 8px;
-        color: var(--muted);
-        line-height: 1.55;
-        font-size: 0.92rem;
-      }
-
-      .cta-panel {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 16px;
-        align-items: end;
-      }
-
-      .cta-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: flex-end;
-      }
-
-      .button.primary {
-        background: linear-gradient(135deg, rgba(79, 124, 255, 0.24), rgba(101, 228, 255, 0.14));
-        border-color: rgba(101, 228, 255, 0.44);
-        box-shadow: 0 0 30px rgba(79, 124, 255, 0.18);
-      }
-
-      .button.ghost {
-        color: var(--muted);
-      }
-
-      .button[aria-disabled="true"] {
-        cursor: default;
-        opacity: 0.74;
+      .bullet-list span::before {
+        background: #000 !important;
+        box-shadow: none !important;
       }
 
       .reveal {
-        opacity: 0;
-        transform: translateY(28px) translateX(-16px);
-        filter: blur(8px);
-        transition: opacity 640ms ease, transform 640ms ease, filter 640ms ease;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    @media (max-width: 1100px) {
+
+      .hero-grid,
+      .features-grid,
+      .cta-panel {
+        grid-template-columns: 1fr;
       }
 
-      .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0) translateX(0);
-        filter: blur(0);
+      .hero-panel {
+        min-height: auto;
       }
 
-      .delay-1 {
-        transition-delay: 80ms;
+      .cta-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 760px) {
+
+      .shell,
+      .topbar-inner {
+        width: min(var(--max), calc(100% - 20px));
       }
 
-      .delay-2 {
-        transition-delay: 160ms;
+      .topbar-inner {
+        padding: 16px 0;
+        align-items: start;
       }
 
-      .delay-3 {
-        transition-delay: 240ms;
+      .hero {
+        padding-top: 40px;
       }
 
-      .delay-4 {
-        transition-delay: 320ms;
+      .hero-meta,
+      .control-stack,
+      .skill-grid,
+      .tech-matrix,
+      .timeline-item,
+      .edu-item,
+      .signal-row,
+      .carousel-topbar,
+      .experience-head {
+        grid-template-columns: 1fr;
       }
 
-      @media print {
-        @page {
-          margin: 0.5in;
-        }
-
-        :root {
-          --bg: #ffffff;
-          --bg-elevated: #ffffff;
-          --bg-panel: #ffffff;
-          --panel-border: rgba(65, 85, 122, 0.35);
-          --text: #000000;
-          --muted: #1f2937;
-          --accent: #0f172a;
-        }
-
-        * {
-          -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
-        }
-
-        html,
-        body {
-          background: #ffffff !important;
-          color: var(--text) !important;
-          font-size: 11pt;
-          line-height: 1.35;
-        }
-
-        body::before,
-        body::after {
-          display: none;
-        }
-
-        .topbar {
-          display: none !important;
-        }
-
-        .nav-link,
-        .button,
-        .panel,
-        .meta-cell,
-        .stat,
-        .skill-chip,
-        .timeline-item,
-        .edu-item,
-        .signal-row,
-        .matrix-item,
-        .experience-slide {
-          color: var(--text) !important;
-          background: #ffffff !important;
-          box-shadow: none !important;
-          clip-path: none !important;
-          border: 1px solid rgba(65, 85, 122, 0.18) !important;
-        }
-
-        .shell {
-          padding-bottom: 0;
-        }
-
-        .hero,
-        .section {
-          padding: 10px 0 !important;
-        }
-
-        .panel,
-        .meta-cell,
-        .stat,
-        .skill-chip,
-        .timeline-item,
-        .edu-item,
-        .signal-row,
-        .matrix-item,
-        .experience-slide {
-          padding: 10px !important;
-        }
-
-        .hero-panel,
-        .status-panel,
-        .feature-block,
-        .stack-lane,
-        .experience-carousel,
-        .timeline,
-        .signal-grid,
-        .skill-grid,
-        .tech-matrix,
-        .bullet-list,
-        .carousel-track,
-        .cta-actions {
-          gap: 8px !important;
-        }
-
-        .section-head {
-          margin-bottom: 10px;
-        }
-
-        .topbar-inner,
-        .hero-meta,
-        .control-stack,
-        .skill-grid,
-        .tech-matrix {
-          gap: 6px !important;
-        }
-
-        .hero-copy p,
-        .section-head p,
-        .skill-chip p,
-        .timeline-copy p,
-        .edu-copy p,
-        .experience-head p,
-        .matrix-item span {
-          margin-top: 6px !important;
-          line-height: 1.4 !important;
-        }
-
-        .panel-label,
-        .eyebrow,
-        .timeline-year,
-        .slide-index,
-        .stat-value {
-          color: var(--accent) !important;
-          text-shadow: none !important;
-        }
-
-        .panel-label::after {
-          width: 36px;
-          box-shadow: none !important;
-          background: linear-gradient(90deg, rgba(15, 23, 42, 0.45), transparent) !important;
-        }
-
-        p,
-        span,
-        strong,
-        div,
-        li {
-          color: inherit;
-        }
-
-        p,
-        .hero-copy p,
-        .section-head p,
-        .skill-chip p,
-        .timeline-copy p,
-        .edu-copy p,
-        .experience-head p,
-        .matrix-item span,
-        .signal-row .tag,
-        .role-meta,
-        .mini-label,
-        .stat-label,
-        .button.ghost {
-          color: var(--muted) !important;
-        }
-
-        h1,
-        h2,
-        h3,
-        strong,
-        .signal-row strong,
-        .meta-cell strong,
-        .skill-chip strong,
-        .timeline-copy strong,
-        .edu-copy strong,
-        .experience-slide strong,
-        .experience-head strong {
-          color: var(--text) !important;
-        }
-
-        .experience-slide,
-        .experience-slide *,
-        .experience-head,
-        .experience-head *,
-        .role-meta,
-        .role-meta *,
-        .bullet-list span,
-        .slide-index {
-          color: var(--text) !important;
-        }
-
-        .experience-head p,
-        .role-meta,
-        .role-meta div {
-          color: var(--muted) !important;
-        }
-
-        .signal-row,
-        .matrix-item {
-          border-color: rgba(65, 85, 122, 0.18) !important;
-        }
-
-        .dot {
-          background: var(--accent) !important;
-          box-shadow: none !important;
-        }
-
-        .panel::before,
-        .radar::before,
-        .radar::after {
-          display: none !important;
-        }
-
-        .reveal,
-        .reveal.is-visible {
-          opacity: 1 !important;
-          transform: none !important;
-          filter: none !important;
-        }
-
-        .hero-grid,
-        .features-grid,
-        .cta-panel,
-        .carousel-topbar,
-        .experience-head {
-          grid-template-columns: 1fr;
-        }
-
-        .features-grid,
-        .feature-block,
-        .stack-lane,
-        .experience-carousel,
-        .timeline,
-        .carousel-track {
-          display: block !important;
-        }
-
-        .feature-block > *,
-        .stack-lane > *,
-        .timeline > *,
-        .carousel-track > * {
-          margin-bottom: 8px !important;
-        }
-
-        .hero-panel,
-        .carousel-track {
-          min-height: 0;
-        }
-
-        .carousel-controls,
-        .indicator-row,
-        .carousel-topbar,
-        #print-page {
-          display: none !important;
-        }
-
-        .button.ghost {
-          display: none !important;
-        }
-
-        .contact-print-note,
-        .cta-actions {
-          gap: 0 !important;
-        }
-
-        .experience-slide {
-          display: grid !important;
-          break-inside: avoid;
-          page-break-inside: avoid;
-          margin-bottom: 8px;
-        }
-
-        .carousel-track {
-          gap: 8px;
-        }
-
-        .shell,
-        .topbar-inner {
-          width: 100%;
-        }
-
-        .section,
-        .panel,
-        .experience-slide,
-        .edu-item {
-          break-inside: avoid;
-          page-break-inside: avoid;
-        }
-
-        .contact .bullet-list,
-        #contact .bullet-list {
-          display: none !important;
-        }
-
-        a[href] {
-          text-decoration: none;
-        }
+      .carousel-track {
+        min-height: 0;
       }
 
-      @media (max-width: 1100px) {
-        .hero-grid,
-        .features-grid,
-        .cta-panel {
-          grid-template-columns: 1fr;
-        }
-
-        .hero-panel {
-          min-height: auto;
-        }
-
-        .cta-actions {
-          justify-content: flex-start;
-        }
+      .role-meta {
+        text-align: left;
       }
 
-      @media (max-width: 760px) {
-        .shell,
-        .topbar-inner {
-          width: min(var(--max), calc(100% - 20px));
-        }
-
-        .topbar-inner {
-          padding: 12px 0;
-          align-items: start;
-        }
-
-        .hero {
-          padding-top: 32px;
-        }
-
-        .hero-meta,
-        .control-stack,
-        .skill-grid,
-        .tech-matrix {
-          grid-template-columns: 1fr;
-        }
-
-        .timeline-item,
-        .edu-item,
-        .signal-row,
-        .carousel-topbar,
-        .experience-head {
-          grid-template-columns: 1fr;
-        }
-
-        .carousel-track {
-          min-height: 0;
-        }
-
-        .role-meta {
-          text-align: left;
-        }
-
-        h1 {
-          font-size: clamp(2.6rem, 16vw, 4rem);
-        }
-
-        .section-head {
-          grid-template-columns: 1fr;
-        }
+      h1 {
+        font-size: clamp(2.6rem, 16vw, 4rem);
       }
-    </style>
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="topbar-inner">
-        <div class="brand">
-          <span class="eyebrow">System Profile</span>
-          <strong>Rishad Mahomed Ebrahim</strong>
-        </div>
-        <nav class="topnav" aria-label="Section links">
-          <a class="nav-link" href="#overview">Overview</a>
-          <a class="nav-link" href="#experience">Experience</a>
-          <a class="nav-link" href="#contact">Contact</a>
-        </nav>
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="eyebrow">Sys.Profile</span>
+        <strong>Rishad M. Ebrahim</strong>
       </div>
-    </header>
+      <nav class="topnav" aria-label="Section links">
+        <a class="nav-link" href="#overview">Overview</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <main class="shell">
-      <section class="hero" id="overview">
-        <div class="hero-grid">
-          <article class="panel hero-panel reveal is-visible">
-            <span class="panel-label">Software Engineer</span>
-            <div class="hero-copy">
-              <h1>Rishad Ebrahim</h1>
-              <p>
-                Full-stack software engineer with experience across backend systems, web applications, internal tools, platform
-                modernisation, and DevOps. My background includes scientific infrastructure, but the core strength is building
-                reliable software products and services that transfer well across industries.
-              </p>
+  <main class="shell">
+    <section class="hero" id="overview">
+      <div class="hero-grid">
+        <article class="panel hero-panel reveal is-visible">
+          <span class="panel-label">Software Engineer</span>
+          <div class="hero-copy">
+            <h1>Rishad Ebrahim</h1>
+            <p>
+              Full-stack software engineer with experience across backend systems, web applications, internal tools,
+              platform
+              modernisation, and DevOps. My background includes scientific infrastructure, but the core strength is
+              building
+              reliable software products and services that transfer well across industries.
+            </p>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-cell">
+              <span class="mini-label">Loc</span>
+              <strong>Cape Town, ZA</strong>
             </div>
+            <div class="meta-cell">
+              <span class="mini-label">Focus</span>
+              <strong>Full-Stack Eng</strong>
+            </div>
+            <div class="meta-cell">
+              <span class="mini-label">Role</span>
+              <strong>Software Engineer</strong>
+            </div>
+            <div class="meta-cell">
+              <span class="mini-label">Scope</span>
+              <strong>Backend / Frontend / Ops</strong>
+            </div>
+          </div>
 
-            <div class="hero-meta">
-              <div class="meta-cell">
-                <span class="mini-label">Location</span>
-                <strong>Cape Town, South Africa</strong>
+          <div class="control-stack">
+            <div class="stat">
+              <span class="stat-label">Domain</span>
+              <div class="stat-value">Sci-Infra</div>
+              <strong>Applied software engineering in a demanding production environment with complex operational
+                systems.</strong>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Stack</span>
+              <div class="stat-value">Py + TS</div>
+              <strong>Hands-on across APIs, data systems, internal tools, user-facing web apps, and service
+                integrations.</strong>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Strength</span>
+              <div class="stat-value compact">Modernise</div>
+              <strong>Legacy upgrades, full-stack delivery, and practical engineering work that translates beyond one
+                domain.</strong>
+            </div>
+          </div>
+        </article>
+
+        <div class="side-stack">
+          <aside class="panel status-panel reveal delay-1">
+            <span class="panel-label">Status Snapshot</span>
+            <div class="signal-grid">
+              <div class="signal-row">
+                <span class="tag">Role</span>
+                <strong>Software Engineer at SARAO</strong>
+                <span class="dot" aria-hidden="true"></span>
               </div>
-              <div class="meta-cell">
-                <span class="mini-label">Focus</span>
-                <strong>Full-Stack Engineering</strong>
+              <div class="signal-row">
+                <span class="tag">Build</span>
+                <strong>Web applications, backend services, internal tools, and platform improvements</strong>
+                <span class="dot" aria-hidden="true"></span>
               </div>
-              <div class="meta-cell">
-                <span class="mini-label">Current Role</span>
-                <strong>Software Engineer</strong>
+              <div class="signal-row">
+                <span class="tag">Tech</span>
+                <strong>Python, C#, TypeScript, FastAPI, PostgreSQL, NATS, Angular, React</strong>
+                <span class="dot" aria-hidden="true"></span>
               </div>
-              <div class="meta-cell">
-                <span class="mini-label">Scope</span>
-                <strong>Backend, Frontend, DevOps, Systems</strong>
+              <div class="signal-row">
+                <span class="tag">Value</span>
+                <strong>Strong full-stack engineering foundation with experience in complex, high-reliability
+                  environments</strong>
+                <span class="dot" aria-hidden="true"></span>
               </div>
             </div>
+          </aside>
+        </div>
+      </div>
+    </section>
 
-            <div class="control-stack">
-              <div class="stat">
-                <span class="stat-label">Domain Experience</span>
-                <div class="stat-value">Scientific Infra</div>
-                <strong>Applied software engineering in a demanding production environment with complex operational systems.</strong>
+    <section class="section" id="experience">
+      <div class="section-head reveal">
+        <div>
+          <span class="panel-label">Log Data</span>
+          <h2>Experience.</h2>
+        </div>
+        <p>
+          My experience spans backend engineering, frontend development, systems integration, internal tooling, and
+          modernisation
+          work across long-lived software platforms.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-block">
+          <article class="panel reveal delay-1">
+            <span class="panel-label">Tech Stack</span>
+            <div class="skill-grid">
+              <div class="skill-chip">
+                <span class="mini-label">Lang</span>
+                <strong>Python, C#, C++, TypeScript, JavaScript</strong>
+                <p>Used across backend services, internal tools, desktop applications, and full-stack product work.</p>
               </div>
-              <div class="stat">
-                <span class="stat-label">Core Stack</span>
-                <div class="stat-value">Python + TS</div>
-                <strong>Hands-on across APIs, data systems, internal tools, user-facing web apps, and service integrations.</strong>
+              <div class="skill-chip">
+                <span class="mini-label">Web</span>
+                <strong>FastAPI, Tornado, Angular, AngularJS, React, Next.js</strong>
+                <p>Experience building APIs, admin surfaces, operational interfaces, and modern web applications.</p>
               </div>
-              <div class="stat">
-                <span class="stat-label">Strength</span>
-                <div class="stat-value compact">Modernisation</div>
-                <strong>Legacy upgrades, full-stack delivery, and practical engineering work that translates beyond one domain.</strong>
+              <div class="skill-chip">
+                <span class="mini-label">Data</span>
+                <strong>PostgreSQL, MariaDB, NATS</strong>
+                <p>Applied in backend services, data-heavy workflows, messaging pipelines, and production support
+                  tooling.</p>
+              </div>
+              <div class="skill-chip">
+                <span class="mini-label">Infra</span>
+                <strong>Docker, Kubernetes, Jenkins, OpenStack</strong>
+                <p>Containerised applications, enabled CI/CD, and supported delivery workflows across modern and legacy
+                  systems.</p>
               </div>
             </div>
           </article>
 
-          <div class="side-stack">
-            <aside class="panel status-panel reveal delay-1">
-              <span class="panel-label">Profile Snapshot</span>
-              <div class="signal-grid">
-                <div class="signal-row">
-                  <span class="tag">Role</span>
-                  <strong>Software Engineer at SARAO</strong>
-                  <span class="dot" aria-hidden="true"></span>
-                </div>
-                <div class="signal-row">
-                  <span class="tag">Building</span>
-                  <strong>Web applications, backend services, internal tools, and platform improvements</strong>
-                  <span class="dot" aria-hidden="true"></span>
-                </div>
-                <div class="signal-row">
-                  <span class="tag">Stack</span>
-                  <strong>Python, C#, TypeScript, FastAPI, PostgreSQL, NATS, Angular, React</strong>
-                  <span class="dot" aria-hidden="true"></span>
-                </div>
-                <div class="signal-row">
-                  <span class="tag">Value</span>
-                  <strong>Strong full-stack engineering foundation with experience in complex, high-reliability environments</strong>
-                  <span class="dot" aria-hidden="true"></span>
-                </div>
+          <article class="panel reveal delay-2">
+            <span class="panel-label">Context Variables</span>
+            <div class="tech-matrix">
+              <div class="matrix-item">
+                <strong>Engineering Focus</strong>
+                <span>Full-stack development, distributed systems, modernisation, platform maintenance, and systems
+                  integration.</span>
               </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="experience">
-        <div class="section-head reveal">
-          <div>
-            <span class="panel-label">Experience</span>
-            <h2>Work experience.</h2>
-          </div>
-          <p>
-            My experience spans backend engineering, frontend development, systems integration, internal tooling, and modernisation
-            work across long-lived software platforms.
-          </p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-block">
-            <article class="panel reveal delay-1">
-              <span class="panel-label">Stack</span>
-              <div class="skill-grid">
-                <div class="skill-chip">
-                  <span class="mini-label">Languages</span>
-                  <strong>Python, C#, C++, TypeScript, JavaScript</strong>
-                  <p>Used across backend services, internal tools, desktop applications, and full-stack product work.</p>
-                </div>
-                <div class="skill-chip">
-                  <span class="mini-label">Web Stack</span>
-                  <strong>FastAPI, Tornado, Angular, AngularJS, React, Next.js</strong>
-                  <p>Experience building APIs, admin surfaces, operational interfaces, and modern web applications.</p>
-                </div>
-                <div class="skill-chip">
-                  <span class="mini-label">Data + Messaging</span>
-                  <strong>PostgreSQL, MariaDB, NATS</strong>
-                  <p>Applied in backend services, data-heavy workflows, messaging pipelines, and production support tooling.</p>
-                </div>
-                <div class="skill-chip">
-                  <span class="mini-label">Infrastructure</span>
-                  <strong>Docker, Kubernetes, Jenkins, OpenStack</strong>
-                  <p>Containerised applications, enabled CI/CD, and supported delivery workflows across modern and legacy systems.</p>
-                </div>
+              <div class="matrix-item">
+                <strong>Version Control</strong>
+                <span>Git, GitHub, SVN, ALIM with revision control and configuration management exposure.</span>
               </div>
-            </article>
-
-            <article class="panel reveal delay-2">
-              <span class="panel-label">Additional Context</span>
-              <div class="tech-matrix">
-                <div class="matrix-item">
-                  <strong>Engineering Focus</strong>
-                  <span>Full-stack development, distributed systems, modernisation, platform maintenance, and systems integration.</span>
-                </div>
-                <div class="matrix-item">
-                  <strong>Version Control</strong>
-                  <span>Git, GitHub, SVN, ALIM with revision control and configuration management exposure.</span>
-                </div>
-                <div class="matrix-item">
-                  <strong>Working Style</strong>
-                  <span>Comfortable across backend systems, frontend interfaces, testing tools, and infrastructure pipelines.</span>
-                </div>
-                <div class="matrix-item">
-                  <strong>Transferable Strength</strong>
-                  <span>Experience delivering software in complex environments where reliability, maintainability, and iteration all matter.</span>
-                </div>
+              <div class="matrix-item">
+                <strong>Working Style</strong>
+                <span>Comfortable across backend systems, frontend interfaces, testing tools, and infrastructure
+                  pipelines.</span>
               </div>
-            </article>
-          </div>
-
-          <div class="stack-lane">
-            <article class="panel reveal delay-1">
-              <span class="panel-label">Career Carousel</span>
-              <div class="experience-carousel" data-carousel>
-                <div class="carousel-topbar">
-                  <div>
-                    <strong>Full work history</strong>
-                    <p>Each slide expands a role with the complete experience from the resume.</p>
-                  </div>
-                  <div class="carousel-controls">
-                    <button class="button carousel-button" type="button" data-carousel-prev aria-label="Previous role">&larr;</button>
-                    <button class="button carousel-button" type="button" data-carousel-next aria-label="Next role">&rarr;</button>
-                  </div>
-                </div>
-
-                <div class="carousel-track">
-                  <article class="experience-slide is-active" data-slide aria-hidden="false">
-                    <div class="experience-head">
-                      <div>
-                        <span class="panel-label">Software Engineer</span>
-                        <p>Full-stack and backend engineering across operational systems, internal tools, modern web applications, and platform upgrades.</p>
-                      </div>
-                      <div class="role-meta">
-                        <div class="slide-index">Slide 1 / 3</div>
-                        <strong>SARAO</strong>
-                        <div>Cape Town</div>
-                        <div>January 2021 - Present</div>
-                      </div>
-                    </div>
-
-                    <div class="bullet-list">
-                      <span>Develop and maintain control and monitoring software for the MeerKAT radio telescope.</span>
-                      <span>Developed and deployed software for MeerKAT’s next-generation correlator beamformer.</span>
-                      <span>Built a real-time sensor flagging system using PostgreSQL, NATS, Tornado, and AngularJS to support operational monitoring.</span>
-                      <span>Contributed to an in-house visitor management system with client and admin interfaces using Next.js, TypeScript, FastAPI, and PostgreSQL.</span>
-                      <span>Improved telescope sensor archive performance by implementing a two-tier architecture for short- and long-term data storage and retrieval.</span>
-                      <span>Ported critical telescope control software from Python 2 to Python 3, improving long-term maintainability and compatibility.</span>
-                      <span>Designed a migration strategy and workflow for moving AngularJS to Angular using Web Components to support phased modernisation of the Telescope Operator GUI.</span>
-                      <span>Developed software simulators for telescope system devices to support testing, validation, and control software development.</span>
-                      <span>Resolved critical interface issues in Dish Control and Monitoring software, enabling integration and verification activities on MeerKAT extension dishes.</span>
-                      <span>Improved stability of a legacy .NET WinForms telescope operator application by resolving memory leaks and multithreading issues.</span>
-                      <span>Implemented reporting capabilities in telescope operator software used for operational workflows.</span>
-                      <span>Containerised legacy applications and supported CI/CD setup using Jenkins, GitLab, and GitHub Actions.</span>
-                      <span>Contributed to an OpenStack-based private cloud as part of an internal innovation challenge.</span>
-                    </div>
-                  </article>
-
-                  <article class="experience-slide" data-slide aria-hidden="true">
-                    <div class="experience-head">
-                      <div>
-                        <span class="panel-label">Junior RF Technician</span>
-                        <p>Automation, documentation, test support, and RF system integration work that built a strong systems foundation.</p>
-                      </div>
-                      <div class="role-meta">
-                        <div class="slide-index">Slide 2 / 3</div>
-                        <strong>SARAO</strong>
-                        <div>Cape Town</div>
-                        <div>January 2018 - December 2020</div>
-                      </div>
-                    </div>
-
-                    <div class="bullet-list">
-                      <span>Automated RF test equipment workflows and data analysis using Python scripts.</span>
-                      <span>Authored engineering and system documentation including Design Documents, SRDs, ICDs, IRDs, PBS documents, block diagrams, and ATPs.</span>
-                      <span>Assembled, integrated, and tested radio astronomy receivers and GPS timing reference systems.</span>
-                      <span>Characterised RF components, conducted acceptance testing, and performed fault diagnosis and repair.</span>
-                      <span>Managed document revision control and configuration management using SVN and ALIM tools.</span>
-                      <span>Performed RF system simulations using AWR Microwave Office.</span>
-                      <span>Designed PCBs and conducted component-level troubleshooting.</span>
-                      <span>Supported procurement activities and cost-performance analysis for high-value technical items.</span>
-                    </div>
-                  </article>
-
-                  <article class="experience-slide" data-slide aria-hidden="true">
-                    <div class="experience-head">
-                      <div>
-                        <span class="panel-label">Electronic Engineering Technician</span>
-                        <p>Early-career engineering work focused on receiver assembly, test design, and hands-on system verification.</p>
-                      </div>
-                      <div class="role-meta">
-                        <div class="slide-index">Slide 3 / 3</div>
-                        <strong>SARAO</strong>
-                        <div>Cape Town</div>
-                        <div>January 2016 - December 2016</div>
-                      </div>
-                    </div>
-
-                    <div class="bullet-list">
-                      <span>Authored system engineering documentation including Design Documents, SRDs, and ICDs.</span>
-                      <span>Assembled radio astronomy receiver systems.</span>
-                      <span>Designed test jig hardware for acceptance testing.</span>
-                      <span>Performed acceptance testing of electronic circuits.</span>
-                      <span>Integrated and tested GPS timing reference systems.</span>
-                      <span>Designed and assembled RF coaxial cables and related cable assemblies.</span>
-                      <span>Performed receiver system simulations.</span>
-                    </div>
-                  </article>
-                </div>
-
-                <div class="indicator-row" aria-label="Experience slides">
-                  <button class="indicator is-active" type="button" data-indicator="0" aria-label="Go to slide 1"></button>
-                  <button class="indicator" type="button" data-indicator="1" aria-label="Go to slide 2"></button>
-                  <button class="indicator" type="button" data-indicator="2" aria-label="Go to slide 3"></button>
-                </div>
+              <div class="matrix-item">
+                <strong>Transferable Strength</strong>
+                <span>Experience delivering software in complex environments where reliability, maintainability, and
+                  iteration all matter.</span>
               </div>
-            </article>
-
-            <article class="panel reveal delay-2">
-              <span class="panel-label">Education</span>
-              <div class="timeline">
-                <div class="edu-item">
-                  <div class="timeline-year">2017-2018</div>
-                  <div class="edu-copy">
-                    <strong>B.Tech Electrical Engineering (Cum Laude)</strong>
-                    <p>Durban University of Technology</p>
-                  </div>
-                </div>
-                <div class="edu-item">
-                  <div class="timeline-year">2014-2016</div>
-                  <div class="edu-copy">
-                    <strong>National Diploma in Electrical Engineering (Light Current) (Cum Laude)</strong>
-                    <p>Durban University of Technology</p>
-                  </div>
-                </div>
-                <div class="edu-item">
-                  <div class="timeline-year">Award</div>
-                  <div class="edu-copy">
-                    <strong>Dean’s Merit Award</strong>
-                    <p>Durban University of Technology, 2016</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="contact">
-        <article class="panel cta-panel reveal">
-          <div>
-            <span class="panel-label">Contact</span>
-            <h2>Get in touch.</h2>
-            <div class="bullet-list">
-              <span>Let's build something amazing together</span>
             </div>
-          </div>
-          <div class="cta-actions">
-            <button class="button primary" type="button" id="print-page">Print Resume</button>
-            <a href="mailto:rishadm.ebrahim@gmail.com" class="button ghost" aria-disabled="true">rishadm.ebrahim@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rishad-ebrahim-818b88138" class="button ghost" aria-disabled="true">LinkedIn</a>
-          </div>
-        </article>
-      </section>
-    </main>
+          </article>
+        </div>
 
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-            }
+        <div class="stack-lane">
+          <article class="panel reveal delay-1">
+            <span class="panel-label">History Archive</span>
+            <div class="experience-carousel" data-carousel>
+              <div class="carousel-topbar">
+                <div>
+                  <strong>Full work history</strong>
+                  <p>Each module expands a role with the complete experience from the registry.</p>
+                </div>
+                <div class="carousel-controls">
+                  <button class="button carousel-button" type="button" data-carousel-prev
+                    aria-label="Previous">&larr;</button>
+                  <button class="button carousel-button" type="button" data-carousel-next
+                    aria-label="Next">&rarr;</button>
+                </div>
+              </div>
+
+              <div class="carousel-track">
+                <article class="experience-slide is-active" data-slide aria-hidden="false">
+                  <div class="experience-head">
+                    <div>
+                      <span class="panel-label">Software Engineer</span>
+                      <p>Full-stack and backend engineering across operational systems, internal tools, modern web
+                        applications, and platform upgrades.</p>
+                    </div>
+                    <div class="role-meta">
+                      <div class="slide-index">SEQ 01 / 03</div>
+                      <strong>SARAO</strong>
+                      <div>Cape Town</div>
+                      <div>Jan 2021 - Present</div>
+                    </div>
+                  </div>
+
+                  <div class="bullet-list">
+                    <span>Develop and maintain control and monitoring software for the MeerKAT radio telescope.</span>
+                    <span>Developed and deployed software for MeerKAT’s next-generation correlator beamformer.</span>
+                    <span>Built a real-time sensor flagging system using PostgreSQL, NATS, Tornado, and AngularJS to
+                      support operational monitoring.</span>
+                    <span>Contributed to an in-house visitor management system with client and admin interfaces using
+                      Next.js, TypeScript, FastAPI, and PostgreSQL.</span>
+                    <span>Improved telescope sensor archive performance by implementing a two-tier architecture for
+                      short- and long-term data storage and retrieval.</span>
+                    <span>Ported critical telescope control software from Python 2 to Python 3, improving long-term
+                      maintainability and compatibility.</span>
+                    <span>Designed a migration strategy and workflow for moving AngularJS to Angular using Web
+                      Components to support phased modernisation of the Telescope Operator GUI.</span>
+                    <span>Developed software simulators for telescope system devices to support testing, validation, and
+                      control software development.</span>
+                    <span>Resolved critical interface issues in Dish Control and Monitoring software, enabling
+                      integration and verification activities on MeerKAT extension dishes.</span>
+                    <span>Improved stability of a legacy .NET WinForms telescope operator application by resolving
+                      memory leaks and multithreading issues.</span>
+                    <span>Implemented reporting capabilities in telescope operator software used for operational
+                      workflows.</span>
+                    <span>Containerised legacy applications and supported CI/CD setup using Jenkins, GitLab, and GitHub
+                      Actions.</span>
+                    <span>Contributed to an OpenStack-based private cloud as part of an internal innovation
+                      challenge.</span>
+                  </div>
+                </article>
+
+                <article class="experience-slide" data-slide aria-hidden="true">
+                  <div class="experience-head">
+                    <div>
+                      <span class="panel-label">Junior RF Technician</span>
+                      <p>Automation, documentation, test support, and RF system integration work that built a strong
+                        systems foundation.</p>
+                    </div>
+                    <div class="role-meta">
+                      <div class="slide-index">SEQ 02 / 03</div>
+                      <strong>SARAO</strong>
+                      <div>Cape Town</div>
+                      <div>Jan 2018 - Dec 2020</div>
+                    </div>
+                  </div>
+
+                  <div class="bullet-list">
+                    <span>Automated RF test equipment workflows and data analysis using Python scripts.</span>
+                    <span>Authored engineering and system documentation including Design Documents, SRDs, ICDs, IRDs,
+                      PBS documents, block diagrams, and ATPs.</span>
+                    <span>Assembled, integrated, and tested radio astronomy receivers and GPS timing reference
+                      systems.</span>
+                    <span>Characterised RF components, conducted acceptance testing, and performed fault diagnosis and
+                      repair.</span>
+                    <span>Managed document revision control and configuration management using SVN and ALIM
+                      tools.</span>
+                    <span>Performed RF system simulations using AWR Microwave Office.</span>
+                    <span>Designed PCBs and conducted component-level troubleshooting.</span>
+                    <span>Supported procurement activities and cost-performance analysis for high-value technical
+                      items.</span>
+                  </div>
+                </article>
+
+                <article class="experience-slide" data-slide aria-hidden="true">
+                  <div class="experience-head">
+                    <div>
+                      <span class="panel-label">Electronic Eng Technician</span>
+                      <p>Early-career engineering work focused on receiver assembly, test design, and hands-on system
+                        verification.</p>
+                    </div>
+                    <div class="role-meta">
+                      <div class="slide-index">SEQ 03 / 03</div>
+                      <strong>SARAO</strong>
+                      <div>Cape Town</div>
+                      <div>Jan 2016 - Dec 2016</div>
+                    </div>
+                  </div>
+
+                  <div class="bullet-list">
+                    <span>Authored system engineering documentation including Design Documents, SRDs, and ICDs.</span>
+                    <span>Assembled radio astronomy receiver systems.</span>
+                    <span>Designed test jig hardware for acceptance testing.</span>
+                    <span>Performed acceptance testing of electronic circuits.</span>
+                    <span>Integrated and tested GPS timing reference systems.</span>
+                    <span>Designed and assembled RF coaxial cables and related cable assemblies.</span>
+                    <span>Performed receiver system simulations.</span>
+                  </div>
+                </article>
+              </div>
+
+              <div class="indicator-row" aria-label="Experience slides">
+                <div class="indicator is-active" data-indicator="0" aria-label="Go to slide 1"></div>
+                <div class="indicator" data-indicator="1" aria-label="Go to slide 2"></div>
+                <div class="indicator" data-indicator="2" aria-label="Go to slide 3"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel reveal delay-2">
+            <span class="panel-label">Training Data</span>
+            <div class="timeline">
+              <div class="edu-item">
+                <div class="timeline-year">2017-2018</div>
+                <div class="edu-copy">
+                  <strong>B.Tech Electrical Engineering (Cum Laude)</strong>
+                  <p>Durban University of Technology</p>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="timeline-year">2014-2016</div>
+                <div class="edu-copy">
+                  <strong>National Diploma in Electrical Engineering (Light Current) (Cum Laude)</strong>
+                  <p>Durban University of Technology</p>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="timeline-year">Award</div>
+                <div class="edu-copy">
+                  <strong>Dean’s Merit Award</strong>
+                  <p>Durban University of Technology, 2016</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <article class="panel cta-panel reveal">
+        <div>
+          <span class="panel-label">Sys.Comms</span>
+          <h2>Initialize Contact.</h2>
+          <div class="bullet-list">
+            <span>Awaiting connection protocol...</span>
+          </div>
+        </div>
+        <div class="cta-actions">
+          <button class="button primary" type="button" id="print-page">Print Record</button>
+          <a href="mailto:rishadm.ebrahim@gmail.com" class="button ghost"
+            aria-disabled="true">rishadm.ebrahim@gmail.com</a>
+          <a href="https://www.linkedin.com/in/rishad-ebrahim-818b88138" class="button ghost"
+            aria-disabled="true">LinkedIn</a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
           }
-        },
-        {
-          threshold: 0.18,
-          rootMargin: "0px 0px -8% 0px",
         }
-      );
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -8% 0px",
+      }
+    );
 
-      document.querySelectorAll(".reveal").forEach((node) => {
-        if (!node.classList.contains("is-visible")) {
-          observer.observe(node);
-        }
-      });
+    document.querySelectorAll(".reveal").forEach((node) => {
+      if (!node.classList.contains("is-visible")) {
+        observer.observe(node);
+      }
+    });
 
-      document.getElementById("print-page")?.addEventListener("click", () => {
-        window.print();
-      });
+    document.getElementById("print-page")?.addEventListener("click", () => {
+      window.print();
+    });
 
-      document.querySelectorAll("[data-carousel]").forEach((carousel) => {
-        const slides = [...carousel.querySelectorAll("[data-slide]")];
-        const indicators = [...carousel.querySelectorAll("[data-indicator]")];
-        const prev = carousel.querySelector("[data-carousel-prev]");
-        const next = carousel.querySelector("[data-carousel-next]");
-        let index = 0;
+    document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+      const slides = [...carousel.querySelectorAll("[data-slide]")];
+      const indicators = [...carousel.querySelectorAll("[data-indicator]")];
+      const prev = carousel.querySelector("[data-carousel-prev]");
+      const next = carousel.querySelector("[data-carousel-next]");
+      let index = 0;
 
-        const setSlide = (nextIndex) => {
-          index = (nextIndex + slides.length) % slides.length;
+      const setSlide = (nextIndex) => {
+        index = (nextIndex + slides.length) % slides.length;
 
-          slides.forEach((slide, slideIndex) => {
-            const active = slideIndex === index;
-            slide.classList.toggle("is-active", active);
-            slide.setAttribute("aria-hidden", String(!active));
-          });
-
-          indicators.forEach((indicator, indicatorIndex) => {
-            const active = indicatorIndex === index;
-            indicator.classList.toggle("is-active", active);
-            indicator.setAttribute("aria-current", active ? "true" : "false");
-          });
-        };
-
-        prev?.addEventListener("click", () => setSlide(index - 1));
-        next?.addEventListener("click", () => setSlide(index + 1));
-
-        indicators.forEach((indicator, indicatorIndex) => {
-          indicator.addEventListener("click", () => setSlide(indicatorIndex));
+        slides.forEach((slide, slideIndex) => {
+          const active = slideIndex === index;
+          slide.classList.toggle("is-active", active);
+          slide.setAttribute("aria-hidden", String(!active));
         });
 
-        setSlide(0);
+        indicators.forEach((indicator, indicatorIndex) => {
+          const active = indicatorIndex === index;
+          indicator.classList.toggle("is-active", active);
+          indicator.setAttribute("aria-current", active ? "true" : "false");
+        });
+      };
+
+      prev?.addEventListener("click", () => setSlide(index - 1));
+      next?.addEventListener("click", () => setSlide(index + 1));
+
+      indicators.forEach((indicator, indicatorIndex) => {
+        indicator.addEventListener("click", () => setSlide(indicatorIndex));
       });
-    </script>
-  </body>
+
+      setSlide(0);
+    });
+  </script>
+</body>
+
 </html>
